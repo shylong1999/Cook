@@ -37,6 +37,8 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
@@ -150,7 +152,7 @@ public class Fragment_add extends Fragment {
                         Uri downloadUri= uriTask.getResult();
                         if(uriTask.isSuccessful()){
                             pd.dismiss();
-                           databaseReferencedish.child("Dish").push().setValue(new Dish(downloadUri.toString(),namedish.getText().toString(),user.getEmail(),imageuser,make.getText().toString()))
+                           databaseReferencedish.child("Dish").push().setValue(new Dish(downloadUri.toString(),namedish.getText().toString(),user.getEmail(),imageuser,make.getText().toString(),TimeDate()))
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -179,5 +181,16 @@ public class Fragment_add extends Fragment {
                         Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+    public String TimeDate() {
+        String time=null;
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat= new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat dateFormat= new SimpleDateFormat("dd:MM:yyyy");
+
+        time= simpleDateFormat.format(calendar.getTime())+" At " +dateFormat.format(calendar.getTime());
+
+
+        return time;
     }
 }

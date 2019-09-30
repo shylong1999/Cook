@@ -68,7 +68,6 @@ public class RecipeActivity extends AppCompatActivity {
         making=findViewById(R.id.making);
         namedish= findViewById(R.id.namedish);
 
-        Toast.makeText(RecipeActivity.this,firebaseUser.getEmail().toString(),Toast.LENGTH_LONG).show();
         //getdata
         stringimageDish=getIntent().getStringExtra("image");
         stringimageuser=getIntent().getStringExtra("imageuser");

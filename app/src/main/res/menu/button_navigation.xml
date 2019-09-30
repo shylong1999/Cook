@@ -4,6 +4,7 @@
             android:id="@+id/home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home"
+            android:iconTint="#000000"
             />
         <item
             android:title="Add"

@@ -18,6 +18,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -51,7 +52,10 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.SimpleTimeZone;
 
 import static android.app.Activity.RESULT_OK;
 import android.os.Handler;
@@ -60,54 +64,50 @@ import com.google.firebase.storage.UploadTask;
 
 
 public class Fragment_me extends Fragment {
-    private static  final int Pick_IMAGE_REQUEST=1;
-    private static  final int STORAGE_REQUEST_CODE=200;
-
+    private static final int Pick_IMAGE_REQUEST = 1;
+    private static final int STORAGE_REQUEST_CODE = 200;
 
 
     Uri image_uri;
-    private StorageTask mUploadTask;
-
-
+    String changeavata=null;
     StorageReference storageReference;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     FirebaseUser user;
-    Button logout;
+    LinearLayout logout;
     FirebaseAuth mAuth;
     ImageView avatar;
     TextView nametv;
-    Button uplpadimage;
-    Button choseiamge;
+    LinearLayout uplpadimage;
+    LinearLayout history;
+    LinearLayout save;
     ProgressDialog pd;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v= inflater.inflate(R.layout.fragment_account,container,false);
+        View v = inflater.inflate(R.layout.fragment_account, container, false);
 
-        mAuth=FirebaseAuth.getInstance();
-        user=mAuth.getCurrentUser();
-        firebaseDatabase= FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference("User");
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("User");
 
-        storageReference=FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
 
 
-        pd=new ProgressDialog(getActivity());
+        pd = new ProgressDialog(getActivity());
         pd.setMessage("Waiting...");
 
 
-
-
-        Query query=databaseReference.orderByChild("email").equalTo(user.getEmail());
+        Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds:dataSnapshot.getChildren()){
-                    String name= ds.child("usename").getValue().toString();
-                    String email= ds.child("email").getValue().toString();
-                    String image=  ds.child("image").getValue().toString();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String name = ds.child("usename").getValue().toString();
+                    String email = ds.child("email").getValue().toString();
+                    String image = ds.child("image").getValue().toString();
                     nametv.setText(user.getEmail());
                     Picasso.get().load(image).fit().into(avatar);
 
@@ -128,16 +128,17 @@ public class Fragment_me extends Fragment {
 //
 //
 //        });
-        uplpadimage=(Button) v.findViewById(R.id.editname);
+        uplpadimage=(LinearLayout)v.findViewById(R.id.upload);
         uplpadimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadfile();
+                opentfile();
             }
         });
-        avatar=(ImageView)v.findViewById(R.id.avatar);
-        logout = (Button) v.findViewById(R.id.logout);
-        nametv=(TextView)v.findViewById(R.id.usename);
+        avatar = (ImageView) v.findViewById(R.id.avatar);
+
+        nametv = (TextView) v.findViewById(R.id.usename);
+        logout= (LinearLayout) v.findViewById(R.id.dangxuat);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,75 +146,83 @@ public class Fragment_me extends Fragment {
                 checkStatus();
             }
         });
-        avatar.setOnClickListener(new View.OnClickListener() {
+
+        history=(LinearLayout)v.findViewById(R.id.history);
+        history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opentfile();
+                startActivity(new Intent(getActivity(),History.class));
             }
         });
-
+        save= (LinearLayout) v.findViewById(R.id.savedish);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),SaveDishActivity.class));
+            }
+        });
         return v;
 
     }
 
     private void uploadfile() {
 
-            pd.show();
-            String filePathAndName= "user/"+"image_"+user.getUid();
+        pd.show();
+        String filePathAndName = "user/" + "image_" + user.getUid();
 
-            StorageReference storageReference2nd=storageReference.child(filePathAndName);
-            storageReference2nd.putFile(image_uri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
-                            while(!uriTask.isSuccessful());
-                            Uri downloadUri= uriTask.getResult();
-                            if(uriTask.isSuccessful()){
-                                pd.dismiss();
-                                HashMap <String, Object> results= new HashMap<>();
-                                results.put("image",downloadUri.toString());
-
-                                databaseReference.child(user.getUid()).updateChildren(results)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                pd.dismiss();
-                                                Toast.makeText(getActivity(),"image update",Toast.LENGTH_LONG).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                pd.dismiss();
-                                                Toast.makeText(getActivity(),"Error Update",Toast.LENGTH_LONG).show();
-                                            }
-                                        });
-
-                            }
-                            else {
-                                pd.dismiss();
-                                Toast.makeText(getActivity(),"SOME ERROR",Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
+        StorageReference storageReference2nd = storageReference.child(filePathAndName);
+        storageReference2nd.putFile(image_uri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful()) ;
+                        Uri downloadUri = uriTask.getResult();
+                        if (uriTask.isSuccessful()) {
                             pd.dismiss();
-                            Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_LONG).show();
+                            HashMap<String, Object> results = new HashMap<>();
+                            results.put("image", downloadUri.toString());
+
+                            databaseReference.child(user.getUid()).updateChildren(results)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            pd.dismiss();
+                                            Toast.makeText(getActivity(), "image update", Toast.LENGTH_LONG).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            pd.dismiss();
+                                            Toast.makeText(getActivity(), "Error Update", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+
+                        } else {
+                            pd.dismiss();
+                            Toast.makeText(getActivity(), "SOME ERROR", Toast.LENGTH_LONG).show();
                         }
-                    });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        pd.dismiss();
+                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
 
     private void opentfile() {
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, Pick_IMAGE_REQUEST);
 
-        }
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -222,22 +231,22 @@ public class Fragment_me extends Fragment {
         if (requestCode == Pick_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             image_uri = data.getData();
-
             Picasso.get().load(image_uri).fit().centerCrop().into(avatar);
+            uploadfile();
         }
     }
+
     private String getFileExtension(Uri uri) {
-        ContentResolver cR=getActivity().getContentResolver();
+        ContentResolver cR = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-    private void checkStatus(){
-        FirebaseUser user=mAuth.getCurrentUser();
-        if(user!=null){
-        }
-        else {
-            startActivity(new Intent(getActivity(),SignIn.class));
+    private void checkStatus() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+        } else {
+            startActivity(new Intent(getActivity(), SignIn.class));
         }
     }
 
@@ -247,4 +256,6 @@ public class Fragment_me extends Fragment {
         super.onStart();
     }
 
-    }
+
+
+}

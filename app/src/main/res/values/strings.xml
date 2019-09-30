@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">dcmm</string>
+    <string name="app_name">Design giao dien</string>
+    <string name = "sign_up" >Create my account</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create">Create my account</string>
+    <string name="input_username">Email</string>
+    <string name="input_password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
 </resources>

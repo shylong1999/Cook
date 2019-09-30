@@ -6,29 +6,15 @@ public class Dish {
     private String emailuser;
     private String imageuser;
     private String make;
-
-    public Dish(String image, String namedish, String emailuser, String imageuser, String make) {
+    private String date;
+    public  Dish(){}
+    public Dish(String image, String namedish, String emailuser, String imageuser, String make, String date) {
         this.image = image;
         this.namedish = namedish;
         this.emailuser = emailuser;
         this.imageuser = imageuser;
         this.make = make;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public Dish (){};
-    public Dish(String image, String namedish, String emailuser, String imageuser) {
-        this.image = image;
-        this.namedish = namedish;
-        this.emailuser = emailuser;
-        this.imageuser = imageuser;
+        this.date = date;
     }
 
     public String getImage() {
@@ -61,5 +47,21 @@ public class Dish {
 
     public void setImageuser(String imageuser) {
         this.imageuser = imageuser;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

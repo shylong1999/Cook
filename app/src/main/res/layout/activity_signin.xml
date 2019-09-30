@@ -7,7 +7,6 @@
     tools:context=".SignIn">
 
     <Button
-        android:id="@+id/bSin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,7 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/mksi" />
 
     <EditText
-        android:id="@+id/mksi"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -33,7 +31,6 @@
 
 
     <EditText
-        android:id="@+id/tksi"
         android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -45,7 +42,6 @@
         android:textColorHint="#000000"/>
 
     <Button
-        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
