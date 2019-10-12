@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,17 +22,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SignUp extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button sign;
     EditText tk;
-    EditText mk;
+    EditText mk,mk2;
     EditText usename;
     DatabaseReference mData;
     ProgressDialog progressDialog;
-    Button signin;
+    TextView signin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,9 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         tk = (EditText) findViewById(R.id.tk);
         mk = (EditText) findViewById(R.id.mk);
+        mk2 = (EditText) findViewById(R.id.password2);
         sign = (Button) findViewById(R.id.button2);
-        signin=(Button) findViewById(R.id.signin);
+        signin=(TextView) findViewById(R.id.textsignin);
         usename = (EditText) findViewById(R.id.usename);
         progressDialog= new ProgressDialog(this);
         progressDialog.setMessage("Wait...");
@@ -58,12 +61,43 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String email=tk.getText().toString();
                 String password=mk.getText().toString();
+                String password2=mk2.getText().toString();
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     tk.setError("Invalid Email");
                     tk.setFocusable(true);
                 }
-                else
+                if(email.isEmpty()){
+                    tk.setError("Mời nhập email");
+                    tk.requestFocus();
+                    return;
+                }
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    tk.setError("Mời nhập đúng email");
+                    tk.requestFocus();
+                    return;
+                }
+                if(password.length()<6){
+                    mk.setError("Mật khẩu phải nhiều hơn 6 kí tự");
+                    mk.requestFocus();
+                    return;
+                }
+                if(password.isEmpty()){
+                    mk.setError("Mời nhập mật khẩu");
+                    mk.requestFocus();
+                    return;
+                }
+                if(!password.equals(password2)){
+                    mk2.setError("Mật khẩu không khớp");
+                    mk2.requestFocus();
+                    return;
+                }
+                else{
                     registerUser(email,password);
+                    tk.setText("");
+                    mk.setText("");
+                    mk2.setText("");
+                    mk2.setFocusable(false);
+                    }
             }
         });
     }
@@ -78,16 +112,14 @@ public class SignUp extends AppCompatActivity {
                             FirebaseUser user=mAuth.getCurrentUser();
 
                             if(task.getResult().getAdditionalUserInfo().isNewUser()){
-                            String email=user.getEmail();
+                                ArrayList<String> save = new ArrayList();
+                                String email=user.getEmail();
                             String uid=user.getUid();
-                            HashMap<Object,String> hashMap= new HashMap<>();
-                            hashMap.put("email",email);
-                            hashMap.put("uid",uid);
-                            hashMap.put("usename","1");
-                            hashMap.put("image","2");
-                            FirebaseDatabase database=FirebaseDatabase.getInstance();
-                            DatabaseReference reference= database.getReference("User");
-                            reference.child(uid).setValue(hashMap);}
+                            HashMap<Object,Acount> hashMap= new HashMap<>();
+                            hashMap.put(uid,new Acount(email,uid,"1",save));
+                            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("User");
+                                reference.child(uid).setValue(new Acount(email,uid,"1",save));
+                            }
 
                             Toast.makeText(SignUp.this,"Success",Toast.LENGTH_LONG).show();
                         }

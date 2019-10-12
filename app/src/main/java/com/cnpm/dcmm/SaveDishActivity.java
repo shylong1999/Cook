@@ -1,6 +1,7 @@
 package com.cnpm.dcmm;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,9 +48,9 @@ public class SaveDishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_save_dish);
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         listView=(ListView)findViewById(R.id.listsave);
-
-        loadsave();
         loaddish();
+        loadsave();
+
 
 
 
@@ -63,10 +65,7 @@ public class SaveDishActivity extends AppCompatActivity {
                 intent.putExtra("namedish",dish.getNamedish());
                 intent.putExtra("making",dish.getMake());
                 intent.putExtra("image",dish.getImage());
-                System.out.println(dish.getImage());
-                System.out.println(dish.getEmailuser());
-                System.out.println(dish.getNamedish());
-                System.out.println(dish.getImageuser());
+
                 startActivity(intent);
             }
         });
@@ -74,28 +73,37 @@ public class SaveDishActivity extends AppCompatActivity {
 
     public void loadsave(){
 
-
         arrayList= new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Saved");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("User").child(firebaseUser.getUid()).child(firebaseUser.getUid()).child("save").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    SaveDish saveDish = postSnapshot.getValue(SaveDish.class);
-                    if(saveDish.getEmailuser().equals(firebaseUser.getEmail())){
-                        arrayList.add(saveDish.getNamedish());
-                    }}
-
-
-                ArrayAdapter arrayAdapter= new ArrayAdapter(SaveDishActivity.this,android.R.layout.simple_list_item_1,arrayList);
-                listView.setAdapter(arrayAdapter);
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                arrayList.add(dataSnapshot.getValue().toString());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
             }
-        });}
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ArrayAdapter arrayAdapter= new ArrayAdapter(SaveDishActivity.this,android.R.layout.simple_list_item_1,arrayList);
+        listView.setAdapter(arrayAdapter);
+    }
     public  void  getdatasavedish( final String a){
         for(int i=0;i< mUploads.size();i++){
             if(a.equals(mUploads.get(i).getNamedish())){

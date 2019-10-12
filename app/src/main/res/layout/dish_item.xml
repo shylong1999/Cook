@@ -1,101 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="360dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:layout_marginTop="5dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            android:id="@+id/imagedish"
-            android:layout_width="361dp"
-            android:layout_height="262dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="19dp"
-            android:layout_marginRight="19dp"
-            android:layout_marginBottom="-1dp"
-            app:srcCompat="@android:color/background_light" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageuser"
+                android:layout_width="63dp"
+                android:layout_height="60dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="8dp"
+                app:civ_border_width="2dp"
+                app:srcCompat="@android:color/background_light" />
 
-        <TextView
-            android:id="@+id/textViewdate"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="118dp"
-            android:layout_marginRight="118dp"
-            android:text="aaaaaa" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameuser"
+                    android:layout_width="167dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="aaaaaa"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewdate"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+
+                    android:text="aaaaaa" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/namedish"
             android:layout_width="222dp"
             android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="88dp"
-            android:layout_marginLeft="88dp"
-            android:layout_marginTop="65dp"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="25dp" />
 
-        <TextView
-            android:id="@+id/nameuser"
-            android:layout_width="167dp"
-            android:layout_height="32dp"
+        <ImageView
+            android:id="@+id/imagedish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="77dp"
-            android:layout_marginLeft="77dp"
-            android:layout_marginTop="9dp"
-            android:text="aaaaaa"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imageuser"
-            android:layout_width="63dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginLeft="11dp"
-            android:layout_marginTop="8dp"
-            app:civ_border_width="2dp"
+            android:adjustViewBounds="true"
             app:srcCompat="@android:color/background_light" />
 
         <FrameLayout
             android:layout_width="56dp"
             android:layout_height="49dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"
-            android:layout_marginBottom="17dp">
+            android:layout_below="@+id/imagedish"
+
+            android:layout_marginTop="1dp"
+
+            android:layout_marginEnd="339dp"
+            android:layout_marginRight="1dp">
 
             <ImageView
                 android:id="@+id/save"
                 android:layout_width="56dp"
                 android:layout_height="49dp"
-                app:srcCompat="@drawable/save" />
+                app:srcCompat="@drawable/save2" />
         </FrameLayout>
 
-    </RelativeLayout>
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

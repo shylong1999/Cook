@@ -76,7 +76,7 @@ public class RecipeActivity extends AppCompatActivity {
         stringmaking=getIntent().getStringExtra("making");
 
         //set
-        Picasso.get().load(stringimageuser).into(imageuser);
+        Picasso.get().load(stringimageuser).fit().into(imageuser);
         Picasso.get().load(stringimageDish).into(imageDish);
         nameuser.setText(stringemailuser);
         making.setText(stringmaking);
@@ -92,7 +92,7 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
         imageviewcm=findViewById(R.id.usercmt);
-        Picasso.get().load(stringimageuser).into(imageviewcm);
+        Picasso.get().load(stringimageuser).fit().into(imageviewcm);
         scrollView=findViewById(R.id.scroll);
 
         LinearLayoutManager layoutManager= new LinearLayoutManager(this);

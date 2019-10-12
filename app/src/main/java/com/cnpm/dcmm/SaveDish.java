@@ -3,7 +3,10 @@ package com.cnpm.dcmm;
 public class SaveDish {
         private String emailuser;
         private String namedish;
+
+
     public SaveDish(){}
+
     public SaveDish(String emailuser, String namedish) {
         this.emailuser = emailuser;
         this.namedish = namedish;

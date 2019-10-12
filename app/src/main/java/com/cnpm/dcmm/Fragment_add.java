@@ -80,11 +80,10 @@ public class Fragment_add extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
-                    String name= ds.child("usename").getValue().toString();
                     String email= ds.child("email").getValue().toString();
                     String image=  ds.child("image").getValue().toString();
                     imageuser=image;
-                    ;
+
 
                 }
             }

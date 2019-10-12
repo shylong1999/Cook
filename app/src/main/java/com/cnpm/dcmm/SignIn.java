@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,17 +24,17 @@ public class SignIn extends AppCompatActivity {
     EditText tk;
     EditText mk;
     Button signin;
-    Button signup;
+    TextView signup;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signindesign1);
+        setContentView(R.layout.activity_signin);
         firebaseAuth=FirebaseAuth.getInstance();
         tk=(EditText)findViewById(R.id.tksi);
         mk=(EditText) findViewById(R.id.mksi);
-        signup= (Button) findViewById(R.id.signup);
+        signup= (TextView) findViewById(R.id.textsignup);
         signin=(Button)findViewById(R.id.bSin);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

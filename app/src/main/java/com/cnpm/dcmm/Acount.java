@@ -1,29 +1,47 @@
 package com.cnpm.dcmm;
 
-public class Acount{
-            private String tk;
-            private String usename;
-            public Acount(){}
+import java.util.ArrayList;
 
-    public Acount(String tk, String usename) {
-        this.tk = tk;
-        this.usename = usename;
+public class Acount {
+    private String email,uid,image;
+    private ArrayList<String> saved;
+
+    public Acount(String email, String uid, String image, ArrayList<String> saved) {
+        this.email = email;
+        this.uid = uid;
+        this.image = image;
+        this.saved = saved;
     }
 
-    public String getTk() {
-        return tk;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTk(String tk) {
-        this.tk = tk;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUsename() {
-        return usename;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUsename(String stt) {
-        this.usename = stt;
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public ArrayList<String> getSaved() {
+        return saved;
+    }
+
+    public void setSaved(ArrayList<String> saved) {
+        this.saved = saved;
     }
 }
-
