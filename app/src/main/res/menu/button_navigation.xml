@@ -4,7 +4,6 @@
             android:id="@+id/home"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home"
-            android:iconTint="#000000"
             />
         <item
             android:title="Add"
@@ -15,5 +14,6 @@
             android:id="@+id/acount"
             android:icon="@drawable/ic_account_box_black_24dp"
             android:title="Me"
+
             />
 </menu>

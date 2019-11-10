@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/contentBodyColor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            style="@style/viewParent.headerText"
+            android:text="Tài khoản" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:src="@android:drawable/ic_menu_camera"
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/usename"
+                style="@style/viewParent.headerText"
+                android:text=""
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/avatar"
+                android:layout_marginTop="20dp"/>
+
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="Thông tin" />
+
+        <TextView
+            android:id="@+id/upload"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_edit_profile"
+            android:text="Đổi avatar" />
+
+        <TextView
+            android:id="@+id/changename"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_dark_mode"
+            android:layout_marginTop="10dp"
+            android:text="Đổi tên người dùng" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="Hoạt Động" />
+
+        <TextView
+            android:id="@+id/history"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_edit_password"
+            android:text="Các bài đã đăng" />
+
+
+        <TextView
+            android:id="@+id/savedish"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_languages"
+            android:text="các bài đã lưu" />
+
+        <TextView
+            android:id="@+id/dangxuat"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_logout"
+            android:text="Logout" />
+
+
+        <TextView
+            android:layout_marginTop="100dp"
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="App ver 1.0 by tu truong"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+</ScrollView>

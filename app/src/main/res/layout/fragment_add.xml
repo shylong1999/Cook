@@ -1,55 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/namedish"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="   Tên món ăn"
-            android:inputType="textPersonName" />
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/ImageDish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            <TextView
+                style="@style/viewParent.headerText"
+                android:text="Đăng món ăn" />
 
-        <EditText
-            android:id="@+id/cachlam"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            <EditText
+                android:layout_centerInParent="true"
+                android:id="@+id/namedish"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/shape2"
+                android:ems="10"
 
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Cách làm"
-            android:inputType="textMultiLine" />
+                android:hint="   Tên món ăn"
+                android:inputType="textPersonName" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="66dp">
+            <EditText
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/motachung"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint=" \n  Mô tả ngắn gọn"
+                android:inputType="textMultiLine"
+                android:background="@drawable/shape2"
 
-            <Button
-                android:id="@+id/upload"
+
+                />
+            <EditText
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/nguyenlieu"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint=" \n   Nhập nguyên liệu"
+                android:inputType="textMultiLine"
+                android:background="@drawable/shape2"
+                />
+            <EditText
+
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cachlam"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint=" \n  Cách làm"
+                android:inputType="textMultiLine"
+                android:background="@drawable/shape2"
+                />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:id="@+id/ImageDish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="156dp"
-                android:layout_marginLeft="156dp"
-                android:layout_marginTop="4dp"
-                android:text="Upload" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/camera"
+                tools:ignore="VectorDrawableCompat"
+                android:layout_centerInParent="true"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp">
+
+                <Button
+                    android:layout_centerInParent="true"
+                    android:id="@+id/upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_marginTop="4dp"
+                    android:text="Đăng bài"
+                    android:background="@drawable/shape2"
+
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
