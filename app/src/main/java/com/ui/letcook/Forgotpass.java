@@ -1,0 +1,57 @@
+package com.ui.letcook;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+public class Forgotpass extends AppCompatActivity {
+    FirebaseAuth auth;
+    FirebaseUser firebaseUser;
+    EditText email;
+    ProgressDialog pd;
+    Button send;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forgotpass);
+            email=findViewById(R.id.emailforgot);
+            send=findViewById(R.id.send);
+        pd=new ProgressDialog(Forgotpass.this);
+        pd.setMessage("Waiting...");
+           auth = FirebaseAuth.getInstance();
+           firebaseUser=auth.getCurrentUser();
+
+            send.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pd.show();
+                    auth.sendPasswordResetEmail(email.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        pd.dismiss();
+                                        Toast.makeText(Forgotpass.this, "Kiểm tra gmail của bạn", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        pd.dismiss();
+                                Toast.makeText(Forgotpass.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+            });
+
+
+    }
+}
