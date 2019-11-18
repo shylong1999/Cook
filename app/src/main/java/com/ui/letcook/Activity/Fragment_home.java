@@ -66,6 +66,8 @@ public class Fragment_home extends Fragment {
     ImageView avatahome;
     TextView hello;
 
+
+    //testupdate
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
