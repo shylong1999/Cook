@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -37,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.R;
 
 
 import java.util.HashMap;
@@ -78,7 +79,7 @@ public class Fragment_me extends Fragment {
 
 
         pd = new ProgressDialog(getActivity());
-        pd.setMessage("Waiting...");
+        pd.setMessage("Vui lòng chờ trong giây lát...");
 
 
         Query query = databaseReference.orderByChild("email").equalTo(user.getEmail());
@@ -89,10 +90,9 @@ public class Fragment_me extends Fragment {
                     String email = ds.child("email").getValue().toString();
                     String image = ds.child("image").getValue().toString();
                     String name= ds.child("username").getValue().toString();
-                    if(name.equals("1")){
-                        nametv.setText(user.getEmail());
-                    }
-                    else nametv.setText(name);
+
+                        nametv.setText(name);
+
 
                     if(image.equals("1")) {
                         Picasso.get().load(R.drawable.photo_camera).fit().centerCrop().into(avatar);
@@ -185,7 +185,7 @@ public class Fragment_me extends Fragment {
         changepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),Changepassword.class));
+                startActivity(new Intent(getActivity(), Changepassword.class));
             }
         });
         return v;

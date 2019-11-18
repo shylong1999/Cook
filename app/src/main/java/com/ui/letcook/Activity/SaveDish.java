@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 public class SaveDish {
     private String idsave;

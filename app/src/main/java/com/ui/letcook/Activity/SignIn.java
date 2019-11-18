@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ui.letcook.R;
 
 public class SignIn extends AppCompatActivity {
     EditText tk;
@@ -101,7 +102,7 @@ public class SignIn extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             progressDialog.dismiss();;
                            FirebaseUser user=firebaseAuth.getCurrentUser();
-                           startActivity(new Intent(SignIn.this,MainActivity.class));
+                           startActivity(new Intent(SignIn.this, MainActivity.class));
                            finish();
                         } else {
                             Toast.makeText(SignIn.this, "Authentication failed.",

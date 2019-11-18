@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Comment;
 public class Comment {
     private String iddish,imageuser,emailuser,comment;
     public Comment(){};

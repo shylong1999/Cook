@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Forgotpass">
-
+    tools:context=".Activity.Forgotpass"
+    android:padding="20dp"
+    >
+    <TextView
+        style="@style/viewParent.headerText"
+        android:text="Tài khoản"
+        android:layout_marginLeft="12dp"
+        />
     <EditText
         android:id="@+id/emailforgot"
-        android:layout_margin="50dp"
-        android:inputType="textPersonName"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp" android:inputType="textPersonName"
         android:layout_height="50dp"
         android:hint="Nhập email của bạn"
         android:layout_width="match_parent"

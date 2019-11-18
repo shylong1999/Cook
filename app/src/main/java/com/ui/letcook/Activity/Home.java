@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.app.Application;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.ui.letcook.R;
 
 
 public class Info extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class Info extends AppCompatActivity {
         super.onStart();
         if(mAuth.getCurrentUser()==null){
             finish();
-            startActivity(new Intent(this,SignIn.class));
+            startActivity(new Intent(this, SignIn.class));
         }
     }
     private void loadInformation(){

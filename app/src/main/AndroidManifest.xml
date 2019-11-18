@@ -8,22 +8,22 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".Home"
+        android:name=".Activity.Home"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Forgotpass"></activity>
-        <activity android:name=".Changepassword" />
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".Activity.Forgotpass"></activity>
+        <activity android:name=".Activity.Changepassword" />
+        <activity android:name=".Activity.SearchActivity" />
         <activity
-            android:name=".SignIn"
+            android:name=".Activity.SignIn"
             android:screenOrientation="portrait" />
-        <activity android:name=".SaveDishActivity" />
-        <activity android:name=".History" />
-        <activity android:name=".RecipeActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name=".Activity.SaveDishActivity" />
+        <activity android:name=".Activity.History" />
+        <activity android:name=".Activity.RecipeActivity" />
+        <activity android:name=".Activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,9 +31,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SignUp" />
+        <activity android:name=".Activity.SignUp" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Dish;
 import android.content.Context;
 
 import android.content.Intent;
@@ -16,6 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.like.LikeButton;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.Activity.Like;
+import com.ui.letcook.R;
+import com.ui.letcook.Activity.RecipeActivity;
+import com.ui.letcook.Activity.SaveDish;
 
 
 import java.util.ArrayList;

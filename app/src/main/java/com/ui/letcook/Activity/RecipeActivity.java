@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.Comment.Comment;
+import com.ui.letcook.Comment.CommentAdapter2;
+import com.ui.letcook.R;
 
 import java.util.ArrayList;
 

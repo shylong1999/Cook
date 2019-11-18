@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ui.letcook.User.Acount;
+import com.ui.letcook.R;
 
 
 import java.util.ArrayList;
@@ -49,7 +51,7 @@ public class SignUp extends AppCompatActivity {
         signin=(TextView) findViewById(R.id.textsignin);
         usename = (EditText) findViewById(R.id.usename);
         progressDialog= new ProgressDialog(this);
-        progressDialog.setMessage("Wait...");
+        progressDialog.setMessage("Vui lòng chờ trong giây lát...");
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,23 +118,23 @@ public class SignUp extends AppCompatActivity {
                                 ArrayList<String> save = new ArrayList();
                                 String email=user.getEmail();
                             String uid=user.getUid();
-                            HashMap<Object,Acount> hashMap= new HashMap<>();
-                            hashMap.put(uid,new Acount(email,uid,"1","1",save,0));
+                            HashMap<Object, Acount> hashMap= new HashMap<>();
+                            hashMap.put(uid,new Acount(email,uid,"1",splitemail(email),save,0));
                             DatabaseReference reference= FirebaseDatabase.getInstance().getReference("User");
-                                reference.child(uid).setValue(new Acount(email,uid,"https://firebasestorage.googleapis.com/v0/b/dcmm-bc67e.appspot.com/o/user%2F947bad55d63d878f3277fc5f789e50bf.png?alt=media&token=75c25cc1-bab0-4a2f-8b1c-81d37f80c6a5","1",save,0));
+                                reference.child(uid).setValue(new Acount(email,uid,"https://firebasestorage.googleapis.com/v0/b/dcmm-bc67e.appspot.com/o/user%2F947bad55d63d878f3277fc5f789e50bf.png?alt=media&token=75c25cc1-bab0-4a2f-8b1c-81d37f80c6a5",splitemail(email),save,0));
                             }
 
-                            Toast.makeText(SignUp.this,"Success",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUp.this,"Tạo tài khoản thành công",Toast.LENGTH_LONG).show();
                         }
                         else {
-                            Toast.makeText(SignUp.this,"Failed",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUp.this,"Tạo tài khoản thất bại",Toast.LENGTH_LONG).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(SignUp.this,""+e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+//                Toast.makeText(SignUp.this,""+e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -141,5 +143,9 @@ public class SignUp extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+    private String splitemail(String a){
+        String[]b=a.split("@");
+        return b[0];
     }
 }

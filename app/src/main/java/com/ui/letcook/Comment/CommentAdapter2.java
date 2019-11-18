@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Comment;
 
 import android.content.Context;
 import android.view.LayoutInflater;

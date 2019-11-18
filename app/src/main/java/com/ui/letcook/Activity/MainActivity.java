@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.ui.letcook.R;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;

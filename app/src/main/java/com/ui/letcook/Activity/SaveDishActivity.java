@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ui.letcook.Dish.Dish;
 import com.ui.letcook.R;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class SaveDishActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getdatasavedish(listView.getItemAtPosition(position).toString());
-                Intent intent= new Intent(SaveDishActivity.this,RecipeActivity.class);
+                Intent intent= new Intent(SaveDishActivity.this, RecipeActivity.class);
                 intent.putExtra("imageuser",dish.getImageuser());
                 intent.putExtra("emailuser",dish.getEmailuser());
                 intent.putExtra("namedish",dish.getNamedish());

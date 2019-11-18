@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ui.letcook.Dish.Dish;
+import com.ui.letcook.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +58,7 @@ public class History extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 getdatasavedish(listView.getItemAtPosition(position).toString());
-                Intent intent= new Intent(History.this,RecipeActivity.class);
+                Intent intent= new Intent(History.this, RecipeActivity.class);
 
                 intent.putExtra("id",dish.getId());
 

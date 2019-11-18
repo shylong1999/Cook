@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Dish;
 public class Dish {
     private String image;
     private String namedish;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SaveDishActivity">
+    tools:context=".Activity.SaveDishActivity">
     <Button
         android:id="@+id/backsave"
         android:layout_width="36dp"

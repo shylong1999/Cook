@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -32,6 +32,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.Dish.Dish;
+import com.ui.letcook.R;
 
 
 import java.text.SimpleDateFormat;
@@ -64,7 +66,7 @@ public class Fragment_add extends Fragment {
         View v= inflater.inflate(R.layout.fragment_add,container,false);
         imageDish= (ImageView) v.findViewById(R.id.ImageDish);
         pd=new ProgressDialog(getActivity());
-        pd.setMessage("Waiting...");
+        pd.setMessage("Vui lòng chờ trong giây lát...");
         auth=FirebaseAuth.getInstance();
         user=auth.getCurrentUser();
         firebaseDatabase= FirebaseDatabase.getInstance();
@@ -196,7 +198,7 @@ public class Fragment_add extends Fragment {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
 
-                                                Toast.makeText(getActivity(), "Error Update", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getActivity(), "Lỗi mạng!", Toast.LENGTH_LONG).show();
                                             }
                                         });
 

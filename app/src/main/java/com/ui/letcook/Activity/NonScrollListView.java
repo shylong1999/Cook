@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,4 +1,4 @@
-package com.ui.letcook;
+package com.ui.letcook.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +34,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.User.Acount;
+import com.ui.letcook.Dish.Dish;
+import com.ui.letcook.Dish.DishAdapter;
+import com.ui.letcook.Dish.DishadminAdapter;
+import com.ui.letcook.R;
+import com.ui.letcook.User.TopAdapter;
 
 
 import java.util.ArrayList;
@@ -84,10 +90,10 @@ public class Fragment_home extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String image = ds.child("image").getValue().toString();
                     String name= ds.child("username").getValue().toString();
-                    if(name.equals("1")){
-                        hello.setText(getTimeFromAndroid()+" "+firebaseUser.getEmail());
-                    }
-                    else hello.setText(getTimeFromAndroid()+" "+name);
+
+                        hello.setText(getTimeFromAndroid()+" "+name);
+
+
 
                     if(image.equals("1")) {
                     Picasso.get().load(R.drawable.photo_camera).fit().centerCrop().into(avatahome);
@@ -123,7 +129,7 @@ public class Fragment_home extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_DPAD_CENTER)) {
-                    Intent i=new Intent(getActivity(),SearchActivity.class);
+                    Intent i=new Intent(getActivity(), SearchActivity.class);
                     i.putExtra("name",search.getText().toString());
                     startActivity(i);
                     System.out.println(search.getText().toString());
@@ -152,7 +158,9 @@ public class Fragment_home extends Fragment {
                 mUploads.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Dish dish= ds.getValue(Dish.class);
-                mUploads.add(dish);
+                    if (!dish.getEmailuser().equals("admin@gmail.com")){
+                        mUploads.add(dish);}
+
                 mAdapter = new DishAdapter(getActivity(), mUploads);
                 mAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(mAdapter);
