@@ -96,9 +96,7 @@ public class SignUp extends AppCompatActivity {
                 }
                 else{
                     registerUser(email,password);
-                    tk.setText("");
-                    mk.setText("");
-                    mk2.setText("");
+
 
                     }
             }
@@ -111,6 +109,9 @@ public class SignUp extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            tk.setText("");
+                            mk.setText("");
+                            mk2.setText("");
                             progressDialog.dismiss();
                             FirebaseUser user=mAuth.getCurrentUser();
 

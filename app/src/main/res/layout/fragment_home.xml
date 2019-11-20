@@ -16,7 +16,9 @@
             android:background="@drawable/shape2"
             android:layout_width="fill_parent"
             android:layout_height="42dp"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:drawableLeft="@drawable/search"
             android:hint="Nấu gì hôm nay - tìm ngay món ngon"
 
@@ -42,58 +44,73 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatarhome"
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:layout_marginTop="15dp"
                         android:layout_marginRight="10dp"
                         app:civ_border_color="#ffffff"
                         app:civ_border_width="2dp" />
 
                     <TextView
-                        android:textSize="18dp"
+                        android:id="@+id/longlon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="28dp"
-                        android:id="@+id/longlon"
-                       ></TextView>
+                        android:textSize="18dp"></TextView>
 
                 </LinearLayout>
 
 
-
             </RelativeLayout>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="10dp"
                 android:background="#F1ECEC" />
             <TextView
-                android:drawableLeft="@drawable/cook"
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
-                android:text="  Món ngon hôm nay"
+                android:text="Món ngon hôm nay"
                 android:textColor="@color/black"
                 android:layout_margin="10dp"
                 android:textSize="20dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="10dp"
                 android:id="@+id/recycleviewadmin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
             </androidx.recyclerview.widget.RecyclerView>
+
             <View
                 android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="10dp"
                 android:background="#F1ECEC" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="Công thức từ Let's Cook"
+                android:textColor="@color/black"
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:id="@+id/recycleviewletcook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

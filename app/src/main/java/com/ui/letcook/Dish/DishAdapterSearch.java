@@ -78,6 +78,7 @@ public class DishAdapterSearch extends RecyclerView.Adapter<DishAdapterSearch.Im
                 databaseReferenceview.setValue(dish.getView() + 1);
                 Intent intent = new Intent(mContext, RecipeActivity.class);
                 intent.putExtra("id", dish.getId());
+                intent.putExtra("email", dish.getEmailuser());
 
                 mContext.startActivity(intent);
                 holder.view.setText(dish.getView() + 1 + " người xem");

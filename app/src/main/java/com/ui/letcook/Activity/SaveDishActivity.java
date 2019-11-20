@@ -1,8 +1,10 @@
 package com.ui.letcook.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +43,8 @@ public class SaveDishActivity extends AppCompatActivity {
     private List<Dish> mUploads;
     TextView daluu;
     Button back;
+    DatabaseReference del;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class SaveDishActivity extends AppCompatActivity {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         listView=(ListView)findViewById(R.id.listsave);
 
+        del = FirebaseDatabase.getInstance().getReference("Dish");
 
         loaddish();
         loadsave();
@@ -80,6 +85,7 @@ public class SaveDishActivity extends AppCompatActivity {
                startActivity(intent);
             }
         });
+
     }
 
     public void loadsave(){

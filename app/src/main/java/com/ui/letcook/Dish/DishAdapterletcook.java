@@ -26,7 +26,7 @@ import com.ui.letcook.Activity.SaveDish;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DishadminAdapter extends RecyclerView.Adapter<DishadminAdapter.ImageViewHolder> {
+public class DishAdapterletcook extends RecyclerView.Adapter<DishAdapterletcook.ImageViewHolder> {
     private Context mContext;
     private List<Dish> mUploads;
     FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
@@ -34,14 +34,14 @@ public class DishadminAdapter extends RecyclerView.Adapter<DishadminAdapter.Imag
     DatabaseReference databaseReference2;
 
 
-    public DishadminAdapter(Context context, List<Dish> uploads) {
+    public DishAdapterletcook(Context context, List<Dish> uploads) {
         mContext = context;
         mUploads = uploads;
     }
 
     @Override
     public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.dish_item_admin, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.dish_item_letcook, parent, false);
         return new ImageViewHolder(v);
     }
 
@@ -139,8 +139,8 @@ public class DishadminAdapter extends RecyclerView.Adapter<DishadminAdapter.Imag
         Picasso.get()
                 .load(dish.getImage())
                 .placeholder(R.drawable.common_full_open_on_phone)
-                    .fit()
-                    .centerCrop()
+                .fit()
+                .centerCrop()
                 .into(holder.imageDish);
 
         holder.imageDish.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +153,6 @@ public class DishadminAdapter extends RecyclerView.Adapter<DishadminAdapter.Imag
                 Intent intent = new Intent(mContext, RecipeActivity.class);
                 intent.putExtra("id", dish.getId());
                 intent.putExtra("email", dish.getEmailuser());
-
 
                 mContext.startActivity(intent);
 
@@ -257,13 +256,13 @@ public class DishadminAdapter extends RecyclerView.Adapter<DishadminAdapter.Imag
             super(itemView);
 //                save=itemView.findViewById(R.id.save);
 //            nameuser = itemView.findViewById(R.id.nameuser);
-            namedish = itemView.findViewById(R.id.namedishadmin);
-            imageDish = itemView.findViewById(R.id.imagedishadmin);
+            namedish = itemView.findViewById(R.id.namedishletcook);
+            imageDish = itemView.findViewById(R.id.imagedishletcook);
 //                imageUser = itemView.findViewById(R.id.imageuser);
-            view = itemView.findViewById(R.id.soviewadmin);
+            view = itemView.findViewById(R.id.soviewletcook);
 //            starButton=itemView.findViewById(R.id.star_button);
 //            likeButton=itemView.findViewById(R.id.like_button);
-            solike=itemView.findViewById(R.id.solikeadmin);
+            solike=itemView.findViewById(R.id.solikeletcook);
 
 //            textsave=itemView.findViewById(R.id.textsave);
         }

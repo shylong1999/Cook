@@ -162,7 +162,9 @@
                     android:id="@+id/imageuserdish"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    app:civ_border_width="2dp" />
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#ffffff"
+                    />
 
                 <TextView
                     android:id="@+id/nameuserdish"
@@ -249,7 +251,9 @@
                     android:layout_width="52dp"
                     android:layout_height="53dp"
                     app:civ_border_width="2dp"
-                    app:srcCompat="@color/colorAccent" />
+                    app:srcCompat="@color/colorAccent"
+                    app:civ_border_color="#ffffff"
+                    />
 
                 <EditText
                     android:id="@+id/editcmt"

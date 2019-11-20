@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.ui.letcook.Dish.DishAdapterletcook;
 import com.ui.letcook.User.Acount;
 import com.ui.letcook.Dish.Dish;
 import com.ui.letcook.Dish.DishAdapter;
@@ -48,8 +49,9 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Fragment_home extends Fragment {
-    private RecyclerView mRecyclerView,mRecyclerViewadmin,mRecyclerViewtop;
+    private RecyclerView mRecyclerView,mRecyclerViewadmin,mRecyclerViewtop,mRecyclerViewletcook;
     private DishAdapter mAdapter;
+    private DishAdapterletcook mAdapterletcook;
     private DishadminAdapter mAdapteradmin;
 
     private ProgressBar mProgressCircle;
@@ -57,7 +59,7 @@ public class Fragment_home extends Fragment {
     private FirebaseUser firebaseUser;
     private DatabaseReference mDatabaseRef,mDatabaseRefadmin,databaseReferencehello;
     private List<Dish> mUploads;
-    private List<Dish> mUploadsadmin;
+    private List<Dish> mUploadsadmin,mUploadsletcook;
     private List<Acount> top,top5;
 
     private TopAdapter topAdapter;
@@ -120,8 +122,14 @@ public class Fragment_home extends Fragment {
         mRecyclerViewadmin.setHasFixedSize(true);
         mRecyclerViewadmin.setLayoutManager(layoutManageradmin);
 
-        LinearLayoutManager layoutManagertop= new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        mRecyclerViewletcook = v.findViewById(R.id.recycleviewletcook);
+        LinearLayoutManager layoutManagerletcook= new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        layoutManagerletcook.setStackFromEnd(true);
+        layoutManagerletcook.setReverseLayout(true);
+        mRecyclerViewletcook.setHasFixedSize(true);
+        mRecyclerViewletcook.setLayoutManager(layoutManagerletcook);
 
+        LinearLayoutManager layoutManagertop= new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         mRecyclerViewtop = v.findViewById(R.id.recycleviewtop);
         mRecyclerViewtop.setHasFixedSize(true);
         mRecyclerViewtop.setLayoutManager(layoutManagertop);
@@ -143,7 +151,7 @@ public class Fragment_home extends Fragment {
         });
 
 
-
+        loadDishletcook();
         loadDish();
         loadDishadmin();
         loadTop();
@@ -160,13 +168,42 @@ public class Fragment_home extends Fragment {
                 mUploads.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                 Dish dish= ds.getValue(Dish.class);
-                    if (!dish.getEmailuser().equals("admin@gmail.com")){
+                    if (!dish.getEmailuser().equals("admin@gmail.com")&&!dish.getEmailuser().equals("letcook@gmail.com")){
                         mUploads.add(dish);}
 
                 mAdapter = new DishAdapter(getActivity(), mUploads);
                 mAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(mAdapter);
               }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+    private void loadDishletcook() {
+        mUploadsletcook = new ArrayList<>();
+        mUploadsletcook.clear();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Dish");
+
+        mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUploadsletcook.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Dish dish= ds.getValue(Dish.class);
+                    if (dish.getEmailuser().equals("letcook@gmail.com")){
+                        mUploadsletcook.add(dish);}
+
+                    mAdapterletcook = new DishAdapterletcook(getActivity(), mUploadsletcook);
+                    mAdapterletcook.notifyDataSetChanged();
+                    mRecyclerViewletcook.setAdapter(mAdapterletcook);
+                }
             }
 
             @Override

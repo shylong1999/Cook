@@ -1,5 +1,6 @@
 package com.ui.letcook.Activity;
 
+import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ import com.like.OnLikeListener;
 import com.squareup.picasso.Picasso;
 import com.ui.letcook.Comment.Comment;
 import com.ui.letcook.Comment.CommentAdapter2;
+import com.ui.letcook.Dish.Dish;
 import com.ui.letcook.R;
 
 import java.util.ArrayList;
@@ -62,7 +64,7 @@ public class RecipeActivity extends AppCompatActivity {
     String emailcmt,iamgecusermt;
     Button back;
     LikeButton starButton,likeButton;
-
+    String emailuser2;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,7 @@ public class RecipeActivity extends AppCompatActivity {
         mota=findViewById(R.id.motachungre);
 
         id=getIntent().getStringExtra("id");
+        emailuser2=getIntent().getStringExtra("email");
 
         //set
       
@@ -122,14 +125,40 @@ public class RecipeActivity extends AppCompatActivity {
 
         //demview
 
+        Query query3=databaseReferenceduser.orderByChild("email").equalTo(emailuser2);
+        query3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String imageusercmt=ds.child("image").getValue().toString();
+                    Picasso.get()
+                            .load(imageusercmt)
+                            .fit()
+                            .centerCrop()
+                            .into(imageuser);
+
+
+
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         Query query = databaseReferencedish.orderByChild("id").equalTo(id);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot ds, @Nullable String s) {
                 emailuser = ds.child("emailuser").getValue().toString();
                 imagedish = ds.child("image").getValue().toString();
-                imageuser1=ds.child("imageuser").getValue().toString();
+//                imageuser1=ds.child("imageuser").getValue().toString();
                 make=ds.child("make").getValue().toString();
                 namedish1=ds.child("id").getValue().toString();
                 namedish2=ds.child("namedish").getValue().toString();
@@ -139,7 +168,7 @@ public class RecipeActivity extends AppCompatActivity {
                 mota.setText(mta);
                 nguyenlieu.setText(nlieu);
                 solikere.setText(solike+"");
-                Picasso.get().load(imageuser1).fit().into(imageuser);
+//                Picasso.get().load(imageuser1).fit().centerCrop().into(imageuser);
                 Picasso.get().load(imagedish).into(imageDish);
                 nameuser.setText(splitemail(emailuser));
                 making.setText(make);
