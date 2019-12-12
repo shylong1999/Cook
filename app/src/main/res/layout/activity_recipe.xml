@@ -160,17 +160,17 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imageuserdish"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#ffffff"
                     />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/nameuserdish"
                     android:layout_width="198dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="17dp"
                     android:textColor="#000000"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -210,8 +210,9 @@
                 android:layout_height="wrap_content"
                 android:text=" Cách làm"
                 android:textSize="20dp"
-                android:textColor="#000000"
                 android:layout_marginTop="10dp"
+                android:textColor="#000000"
+
                 ></TextView>
             <TextView
                 android:layout_margin="10dp"
@@ -220,7 +221,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:inputType="textMultiLine"
-                android:textColor="#000000"
                 android:textSize="15dp" />
             <View
                 android:layout_width="fill_parent"
@@ -253,9 +253,11 @@
                     app:civ_border_width="2dp"
                     app:srcCompat="@color/colorAccent"
                     app:civ_border_color="#ffffff"
+                    android:layout_gravity="center"
                     />
 
                 <EditText
+                    android:layout_gravity="center"
                     android:id="@+id/editcmt"
                     android:layout_width="fill_parent"
                     android:layout_height="43dp"
@@ -263,6 +265,7 @@
                     android:inputType="textPersonName" />
 
                 <ImageButton
+                    android:layout_gravity="center"
                     android:id="@+id/uploadcmt"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

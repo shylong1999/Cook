@@ -18,7 +18,7 @@
             style="@style/viewParent.headerText"
             android:text="Tài khoản" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -26,7 +26,7 @@
                 android:id="@+id/avatar"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:src="@android:drawable/ic_menu_camera"
                 app:civ_border_color="#ffffff"
@@ -38,10 +38,10 @@
                 android:text=""
                 android:textSize="18sp"
                 android:layout_toRightOf="@id/avatar"
-                android:layout_marginTop="20dp"/>
+             android:layout_gravity="center"/>
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
@@ -51,7 +51,7 @@
             android:id="@+id/upload"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_edit_profile"
-            android:text="Đổi avatar" />
+            android:text="Đổi ảnh đại diện" />
 
         <TextView
             android:id="@+id/changename"
@@ -82,13 +82,13 @@
             android:id="@+id/savedish"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_languages"
-            android:text="các bài đã lưu" />
+            android:text="Các bài đã lưu" />
 
         <TextView
             android:id="@+id/dangxuat"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_logout"
-            android:text="Logout" />
+            android:text="Đăng xuất" />
 
 
         <TextView

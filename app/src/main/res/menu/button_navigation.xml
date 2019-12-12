@@ -3,17 +3,17 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Home"
+            android:title="Trang chủ"
             />
         <item
-            android:title="Add"
+            android:title="Đăng bài"
             android:icon="@drawable/ic_edit_black_24dp"
             android:id="@+id/add"
             />
         <item
             android:id="@+id/acount"
             android:icon="@drawable/ic_account_box_black_24dp"
-            android:title="Me"
+            android:title="Tài khoản"
 
             />
 </menu>

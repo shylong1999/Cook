@@ -66,7 +66,7 @@ public class SignUp extends AppCompatActivity {
                 String password=mk.getText().toString();
                 String password2=mk2.getText().toString();
                 if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    tk.setError("Invalid Email");
+                    tk.setError("Tài khoản phải ở định dạng email");
                     tk.setFocusable(true);
                 }
                 if(email.isEmpty()){
@@ -122,7 +122,7 @@ public class SignUp extends AppCompatActivity {
                             HashMap<Object, Acount> hashMap= new HashMap<>();
                             hashMap.put(uid,new Acount(email,uid,"1",splitemail(email),save,0));
                             DatabaseReference reference= FirebaseDatabase.getInstance().getReference("User");
-                                reference.child(uid).setValue(new Acount(email,uid,"https://firebasestorage.googleapis.com/v0/b/dcmm-bc67e.appspot.com/o/user%2F947bad55d63d878f3277fc5f789e50bf.png?alt=media&token=75c25cc1-bab0-4a2f-8b1c-81d37f80c6a5",splitemail(email),save,0));
+                                reference.child(uid).setValue(new Acount(email,uid,"https://firebasestorage.googleapis.com/v0/b/dcmm-bc67e.appspot.com/o/user%2F65a0512d074d9913cddb61bc803b6648.png?alt=media&token=3f6316b2-3ba1-4dbf-bd53-b20a9f57f245",splitemail(email),save,0));
                             }
 
                             Toast.makeText(SignUp.this,"Tạo tài khoản thành công",Toast.LENGTH_LONG).show();

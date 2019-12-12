@@ -21,15 +21,22 @@ public class Forgotpass extends AppCompatActivity {
     FirebaseUser firebaseUser;
     EditText email;
     ProgressDialog pd;
-    Button send;
+    Button send,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpass);
             email=findViewById(R.id.emailforgot);
             send=findViewById(R.id.send);
-        pd=new ProgressDialog(Forgotpass.this);
-        pd.setMessage("Waiting...");
+            back=findViewById(R.id.bachquenmk);
+            back.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            pd=new ProgressDialog(Forgotpass.this);
+            pd.setMessage("Vui lòng chờ trong giây lát...");
            auth = FirebaseAuth.getInstance();
            firebaseUser=auth.getCurrentUser();
 

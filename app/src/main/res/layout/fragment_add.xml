@@ -19,6 +19,7 @@
                 android:text="Đăng món ăn" />
 
             <EditText
+                android:paddingLeft="15dp"
                 android:layout_centerInParent="true"
                 android:id="@+id/namedish"
                 android:layout_marginTop="10dp"
@@ -26,11 +27,11 @@
                 android:layout_height="54dp"
                 android:background="@drawable/shape2"
                 android:ems="10"
-
-                android:hint="   Tên món ăn"
+                android:hint="Tên món ăn"
                 android:inputType="textPersonName" />
 
             <EditText
+                android:padding="15dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:id="@+id/motachung"
@@ -38,13 +39,12 @@
                 android:layout_height="100dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint=" \n  Mô tả ngắn gọn"
+                android:hint="Mô tả ngắn gọn"
                 android:inputType="textMultiLine"
                 android:background="@drawable/shape2"
-
-
                 />
             <EditText
+                android:padding="15dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:id="@+id/nguyenlieu"
@@ -52,12 +52,12 @@
                 android:layout_height="150dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint=" \n   Nhập nguyên liệu"
+                android:hint="Nhập nguyên liệu"
                 android:inputType="textMultiLine"
                 android:background="@drawable/shape2"
                 />
             <EditText
-
+                android:padding="15dp"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:id="@+id/cachlam"
@@ -65,7 +65,7 @@
                 android:layout_height="270dp"
                 android:ems="10"
                 android:gravity="start|top"
-                android:hint=" \n  Cách làm"
+                android:hint="Cách làm"
                 android:inputType="textMultiLine"
                 android:background="@drawable/shape2"
                 />
@@ -91,11 +91,10 @@
                     android:id="@+id/upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-
+                    android:textColor="@color/white"
                     android:layout_marginTop="4dp"
                     android:text="Đăng bài"
-                    android:background="@drawable/shape2"
+                    android:background="#0091EA"
 
                     />
             </RelativeLayout>

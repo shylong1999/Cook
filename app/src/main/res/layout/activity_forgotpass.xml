@@ -5,33 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.Forgotpass"
-    android:padding="20dp"
     >
+    <Button
+        android:id="@+id/bachquenmk"
+        android:layout_width="36dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@drawable/back"
+        android:src="@drawable/back" />
     <TextView
+        android:id="@+id/textView3"
         style="@style/viewParent.headerText"
-        android:text="Tài khoản"
-        android:layout_marginLeft="12dp"
-        />
+
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="7dp"
+        android:text="Quên mật khẩu" />
     <EditText
         android:id="@+id/emailforgot"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp" android:inputType="textPersonName"
         android:layout_height="50dp"
+        android:background="@drawable/shape2"
         android:hint="Nhập email của bạn"
         android:layout_width="match_parent"
-        android:background="@drawable/shape2"
+        android:padding="5dp"
 
          />
 
     <Button
         android:id="@+id/send"
-
-        android:background="@drawable/shape2"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailforgot"
         android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
+        android:background="#0091EA"
+        android:textColor="@color/white"
         android:text="Gửi mật khẩu mới về gmail" />
 </RelativeLayout>

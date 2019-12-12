@@ -20,12 +20,18 @@ import com.ui.letcook.R;
 public class Changepassword extends AppCompatActivity {
     EditText mkcu,mkmoi,mkmoi2;
      FirebaseUser user;
-     Button change;
+     Button change,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changepassword);
-
+        back=findViewById(R.id.bachchangepass);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mkcu=findViewById(R.id.mkcu);
         mkmoi=findViewById(R.id.mkmoi);
         mkmoi2=findViewById(R.id.mkmoi2);

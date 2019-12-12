@@ -9,27 +9,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
       >
 
         <EditText
+            android:paddingLeft="10dp"
+            android:layout_gravity="center"
             android:id="@+id/search"
             android:background="@drawable/shape2"
             android:layout_width="fill_parent"
             android:layout_height="42dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:drawableLeft="@drawable/search"
-            android:hint="Nấu gì hôm nay - tìm ngay món ngon"
+            android:hint="   Tìm ngay món ngon"
+
 
             ></EditText>
+
+
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        >
+        android:layout_marginTop="55dp">
 
 
         <LinearLayout
@@ -37,19 +41,23 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:background="#F1ECEC" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="7dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/avatarhome"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
                         android:layout_marginRight="10dp"
                         app:civ_border_color="#ffffff"
                         app:civ_border_width="2dp" />
@@ -58,6 +66,8 @@
                         android:id="@+id/longlon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
                         android:textSize="18dp"></TextView>
 
                 </LinearLayout>
@@ -67,18 +77,19 @@
 
             <View
                 android:layout_width="fill_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
                 android:background="#F1ECEC" />
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:text="Món ngon hôm nay"
                 android:textColor="@color/black"
-                android:layout_margin="10dp"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleviewadmin"
@@ -89,61 +100,69 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <View
-                android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
                 android:background="#F1ECEC" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:text="Công thức từ Let's Cook"
                 android:textColor="@color/black"
-                android:layout_margin="10dp"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="10dp"
                 android:id="@+id/recycleviewletcook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
 
                 />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#F1ECEC" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:text="Công thức từ cộng đồng"
                 android:textColor="@color/black"
-                android:layout_margin="10dp"
-                android:textSize="20dp" />
-
+                android:textSize="25dp" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="10dp"
                 android:id="@+id/recycleview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
 
-               />
+                />
+
             <View
-                android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="50dp"
                 android:background="#F1ECEC" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="10dp"
                 android:text="Top thành viên"
                 android:textColor="@color/black"
-                android:layout_margin="10dp"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,39 +175,43 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_marginTop="18dp"
-                        android:layout_marginLeft="5dp"
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="18dp"
                         app:srcCompat="@drawable/icon1"
                         tools:ignore="VectorDrawableCompat" />
+
                     <ImageView
-                        android:layout_marginTop="39dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="39dp"
                         app:srcCompat="@drawable/icon2"
                         tools:ignore="VectorDrawableCompat" />
+
                     <ImageView
-                        android:layout_marginTop="39dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="39dp"
                         app:srcCompat="@drawable/icon3"
                         tools:ignore="VectorDrawableCompat" />
+
                     <ImageView
-                        android:layout_marginTop="39dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="39dp"
                         app:srcCompat="@drawable/icon4"
                         tools:ignore="VectorDrawableCompat" />
+
                     <ImageView
-                        android:layout_marginTop="39dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="39dp"
                         app:srcCompat="@drawable/icon5"
                         tools:ignore="VectorDrawableCompat" />
                 </LinearLayout>
@@ -201,14 +224,14 @@
                     />
 
 
-
             </LinearLayout>
 
 
         </LinearLayout>
 
 
-    </ScrollView><![CDATA[
+    </ScrollView>
+    <![CDATA[
 
 
 
