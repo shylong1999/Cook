@@ -58,7 +58,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerviewSearch"
             android:layout_width="fill_parent"
-            android:layout_height="616dp"
+            android:layout_height="match_parent"
 
             android:layout_centerInParent="true"
 
