@@ -152,7 +152,6 @@ public class RecipeActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot ds, @Nullable String s) {
                 emailuser = ds.child("emailuser").getValue().toString();
                 imagedish = ds.child("image").getValue().toString();
-//                imageuser1=ds.child("imageuser").getValue().toString();
                 make=ds.child("make").getValue().toString();
                 namedish1=ds.child("id").getValue().toString();
                 namedish2=ds.child("namedish").getValue().toString();
@@ -162,7 +161,6 @@ public class RecipeActivity extends AppCompatActivity {
                 mota.setText(mta);
                 nguyenlieu.setText(nlieu);
                 solikere.setText(solike+"");
-//                Picasso.get().load(imageuser1).fit().centerCrop().into(imageuser);
                 Picasso.get().load(imagedish).into(imageDish);
                 nameuser.setText(splitemail(emailuser));
                 making.setText(make);
@@ -316,11 +314,11 @@ public class RecipeActivity extends AppCompatActivity {
                 public void liked(LikeButton likeButton) {
 
 
-                    solikere.setText(test[0]+1+"");
+                    solikere.setText(solike+1+"");
                     b[0] = databaseReferenceup.child("User").child(firebaseUser.getUid()).child(firebaseUser.getUid()).child("like").push().getKey();
                     databaseReferenceup.child("User").child(firebaseUser.getUid()).child(firebaseUser.getUid()).child("like").child(b[0]).setValue(new Like(b[0],id));
                     DatabaseReference databaseReferenceview=FirebaseDatabase.getInstance().getReference("Dish").child(id).child("solike");
-                    databaseReferenceview.setValue(test[0]+1);
+                    databaseReferenceview.setValue(solike+1);
                 }
 
                 @Override
@@ -328,25 +326,23 @@ public class RecipeActivity extends AppCompatActivity {
 
                     Like like= new Like();
                     if(b[0]==null) {
-                        solikere.setText(test[0]+"");
+                        solikere.setText(solike-1+"");
                         for (int i = 0; i < arrayListlike.size(); i++) {
                             if (id.equals(arrayListlike.get(i).getNamedish())) {
                                 like = arrayListlike.get(i);
                             }
                         }
                         DatabaseReference databaseReferenceview=FirebaseDatabase.getInstance().getReference("Dish").child(id).child("solike");
-                        databaseReferenceview.setValue(test[0]);
+                        databaseReferenceview.setValue(solike-1);
                         databaseReferenceup.child("User").child(firebaseUser.getUid()).child(firebaseUser.getUid()).child("like").child(like.getId()).setValue(null);
-                        test[0]=test[0];
-
 
                     }
                     if(b[0]!=null){
-                        solikere.setText((test[0]+""));
+                        solikere.setText((solike+""));
 
                         databaseReferenceup.child("User").child(firebaseUser.getUid()).child(firebaseUser.getUid()).child("like").child(b[0]).setValue(null);
                         DatabaseReference databaseReferenceview=FirebaseDatabase.getInstance().getReference("Dish").child(id).child("solike");
-                        databaseReferenceview.setValue(test[0]);
+                        databaseReferenceview.setValue(solike);
 
                     }
                 }
