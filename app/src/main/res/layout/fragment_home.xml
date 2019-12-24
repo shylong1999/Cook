@@ -13,6 +13,7 @@
       >
 
         <EditText
+            android:drawablePadding="10dp"
             android:paddingLeft="10dp"
             android:layout_gravity="center"
             android:id="@+id/search"
@@ -22,7 +23,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:drawableLeft="@drawable/search"
-            android:hint="   Tìm ngay món ngon"
+            android:hint="Tìm ngay món ngon"
 
 
             ></EditText>

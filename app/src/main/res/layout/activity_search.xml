@@ -27,6 +27,7 @@
                 android:src="@drawable/back" />
 
             <EditText
+                android:drawablePadding="7dp"
                 android:id="@+id/searchdish"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +37,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/shape2"
                 android:drawableLeft="@drawable/search"
-                android:hint="  Tìm ngay món ngon"
+                android:hint="Tìm ngay món ngon"
                 android:padding="10dp"></EditText>
         </LinearLayout>
 

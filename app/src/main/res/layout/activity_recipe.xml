@@ -258,6 +258,8 @@
                     />
 
                 <EditText
+                    android:paddingLeft="7dp"
+                    android:layout_marginLeft="7dp"
                     android:layout_gravity="center"
                     android:id="@+id/editcmt"
                     android:layout_width="fill_parent"
