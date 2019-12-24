@@ -215,7 +215,7 @@ public class Fragment_me extends Fragment {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             pd.dismiss();
-                                            Toast.makeText(getActivity(), "image update", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getActivity(), "Cập nhật thành công", Toast.LENGTH_LONG).show();
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {

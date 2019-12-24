@@ -73,7 +73,7 @@ public class CommentAdapter extends BaseAdapter {
         ImageView image=(ImageView)convertView.findViewById(R.id.imagecmt);
         Comment comment= commentList.get(position);
         email.setText(comment.getEmailuser());
-        Picasso.get().load(comment.getImageuser()).into(image);
+        Picasso.get().load(comment.getImageuser()).fit().into(image);
         commenttx.setText(comment.getComment());
         return convertView;
     }

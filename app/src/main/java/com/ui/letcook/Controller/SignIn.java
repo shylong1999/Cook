@@ -83,7 +83,7 @@ public class SignIn extends AppCompatActivity {
             }
         });
         progressDialog= new ProgressDialog(this);
-        progressDialog.setMessage("Logging In...");
+        progressDialog.setMessage("Đang đang nhập...");
 
     }
 
@@ -116,7 +116,8 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(SignIn.this,""+e.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(SignIn.this,"Tài khoản hoặc mật khẩu sai.",Toast.LENGTH_LONG).show();
+
             }
         });
     }

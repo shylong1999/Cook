@@ -137,10 +137,6 @@ public class RecipeActivity extends AppCompatActivity {
                             .into(imageuser);
 
 
-
-
-
-
                 }
 
             }
@@ -202,7 +198,7 @@ public class RecipeActivity extends AppCompatActivity {
 
                     emailcmt=ds.child("email").getValue().toString();
                     iamgecusermt=ds.child("image").getValue().toString();
-                    Picasso.get().load(iamgecusermt).fit().into(imageviewcm);
+                    Picasso.get().load(iamgecusermt).fit().centerCrop().into(imageviewcm);
 
                 }
             }

@@ -185,7 +185,6 @@ public class Fragment_home extends Fragment {
 
     }
 
-
     private void loadDishletcook() {
         mUploadsletcook = new ArrayList<>();
         mUploadsletcook.clear();
@@ -213,6 +212,7 @@ public class Fragment_home extends Fragment {
         });
 
     }
+
     private void loadTop(){
         top=new ArrayList<>();
         top5=new ArrayList<>();
@@ -247,8 +247,6 @@ public class Fragment_home extends Fragment {
         });
     }
 
-
-
     private void searchDish(final String search){
         mUploads = new ArrayList<>();
         mUploads.clear();
@@ -278,6 +276,7 @@ public class Fragment_home extends Fragment {
         });
 
     }
+
     private void loadDishadmin() {
         mUploadsadmin = new ArrayList<>();
         mUploadsadmin.clear();

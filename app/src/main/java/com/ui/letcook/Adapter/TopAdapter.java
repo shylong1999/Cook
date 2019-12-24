@@ -40,7 +40,7 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.ImageViewHolder>
 
         final Acount acount = mUploads.get(position);
 
-        holder.nametop.setText(acount.getEmail());
+        holder.nametop.setText(acount.getUsername());
         holder.sobaidang.setText(acount.getSobaidang()+""+ " công thức");
         Picasso.get()
                 .load(acount.getImage())

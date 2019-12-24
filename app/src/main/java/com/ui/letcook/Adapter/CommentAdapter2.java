@@ -56,7 +56,7 @@ public class CommentAdapter2 extends RecyclerView.Adapter<CommentAdapter2.ImageV
                             .centerCrop()
                             .into(holder.imageusercmt);
 
-
+                    holder.textViewemail.setText(ds.child("username").getValue().toString());
 
 
 
@@ -69,7 +69,7 @@ public class CommentAdapter2 extends RecyclerView.Adapter<CommentAdapter2.ImageV
 
             }
         });
-        holder.textViewemail.setText(splitemail(comment.getEmailuser()));
+
         holder.textViewcmt.setText(comment.getComment());
 //        Picasso.get()
 //                .load(comment.getImageuser())
